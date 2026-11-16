@@ -45,6 +45,7 @@ The tool beats current practice on profit, antibiotic use and deaths at the same
 |---|---|
 | Technical brief (3 pages + references) | [`docs/latex/technical_brief.pdf`](docs/latex/technical_brief.pdf) |
 | Demonstration case | [`docs/latex/demo_case.pdf`](docs/latex/demo_case.pdf) |
+| Narrated dashboard walkthrough (video, 6 min 40 s) | [Release v1.0: `BRD-Command-Center-demo.mp4`](https://github.com/FriendyKiran/BRD-Command-Center/releases/tag/v1.0) |
 | Technical brief, full-length version | [`docs/latex/technical_brief_full.pdf`](docs/latex/technical_brief_full.pdf) |
 | Data dictionary | [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md) |
 | Project overview (plain-language guide) | [`docs/PROJECT_OVERVIEW.md`](docs/PROJECT_OVERVIEW.md) |
