@@ -340,6 +340,6 @@ So the call decides how many animals get antibiotics, not just which drug.
 |---|---|
 | Working dashboard, launch instructions, nothing paid | `npm install && npm run dev`; `README.md` |
 | Shareable data, data dictionary, generation and analysis code | `data/`, `docs/DATA_DICTIONARY.md`, `scripts/`, `src/engine/` |
-| Technical brief (the problem statement asks for 3 pages or fewer; ours is ≈ 3,300 words) | `docs/TECHNICAL_BRIEF.md` |
+| Technical brief, 3 pages or fewer (excluding references) | `docs/latex/technical_brief.pdf` (full-length version: `docs/latex/technical_brief_full.pdf`, `docs/TECHNICAL_BRIEF.md`) |
 | Demonstration case | `docs/DEMO_CASE.md` plus the live `/demo` page |
 | External resources and AI disclosure | `README.md`, `docs/LICENSES-THIRD-PARTY.md`, Credits page |

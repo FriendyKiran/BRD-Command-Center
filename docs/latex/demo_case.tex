@@ -18,8 +18,8 @@
 \usepackage[hidelinks]{hyperref}
 
 % ---- Team details: fill in before submission ------------------------------
-\newcommand{\teamname}{[Team name]}
-\newcommand{\teammembers}{[Member 1], [Member 2], [Member 3]}
+\newcommand{\teamname}{Data Ninjas}
+\newcommand{\teammembers}{Kiran Babu Athina, Manogna Rayala, Sreenivasulu Reddy Settipalli}
 % ----------------------------------------------------------------------------
 
 \definecolor{accent}{HTML}{1F3A2D}
@@ -38,37 +38,32 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{accent}BRD Command Center --- Demonstration case}
+\fancyhead[L]{\small\color{accent}BRD Command Center: Demonstration case}
 \fancyhead[R]{\small\color{accent}\teamname}
 \fancyfoot[C]{\small\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
 \newcommand{\pct}{\,\%}
 \newcommand{\usd}[1]{\$#1}
-\newcommand{\lead}[1]{\textbf{#1}\enspace}
 
 \begin{document}
 
 \begin{center}
-  {\LARGE\bfseries\color{accent} Demonstration case: one end-to-end management decision}\\[4pt]
+  {\LARGE\bfseries\color{accent} Demonstration case: one decision, start to finish}\\[4pt]
   {\large Should Llano Estacado give lot LE-251101-01 metaphylaxis on arrival?}\\[5pt]
   {\small BRD Command Center \textbullet{} AISFS--Merck Animal Health Interdisciplinary Hackathon 2026}\\[2pt]
   {\small \teamname{} \textbullet{} \teammembers}
 \end{center}
 
-Live version: dashboard $\rightarrow$ \textbf{Demonstration Case} (\texttt{/\#/demo}). The page selects this lot automatically: among inbound Llano Estacado lots whose decision depends on a missing record, the one with the most money riding on the decision. All figures below come from the default assumptions (including the derived stewardship weight of \usd{3} per antimicrobial regimen), the default penalized-logistic risk model and generator seed 20251020. Changing any assumption updates the live page.
+This case is also built into the dashboard, on the Demonstration Case page (\texttt{/\#/demo}). The page picks the lot itself. Among Llano Estacado's inbound lots whose decision depends on a missing record, it chooses the one with the most money at stake. Every number below uses the default settings: the \usd{3}-per-regimen stewardship weight, the penalized logistic risk model and generator seed 20251020. Change any assumption in the dashboard and the page updates.
 
 % =============================================================================
-\section{Setting}
+\section{The setting}
 
-\begin{itemize}
-  \item \textbf{Operating date:} Monday 20 October 2025, peak of the fall run.
-  \item \textbf{Yard:} Llano Estacado Feeders, Lubbock TX. Mixed cattle sources and a thin crew: 170 free hospital-pen spaces, 8.5 receiving-crew rider hours/day, 39 lots in the planning window.
-  \item \textbf{Current operating approach (baseline SOP):} economy-class metaphylaxis only for lots under 550\,lb; standard pen riding.
-\end{itemize}
+It is Monday 20 October 2025, the peak of the fall run. Llano Estacado Feeders in Lubbock, Texas, buys cattle from mixed sources and runs a thin crew. It has 170 free hospital-pen spaces, 8.5 hours of receiving-crew riding a day, and 39 lots in the planning window. Its current procedure is to give economy-class metaphylaxis only to lots under 550\,lb, with standard pen riding for everything.
 
 % =============================================================================
-\section{Inputs: lot LE-251101-01}
+\section{The lot}
 
 \begin{table}[h]
 \centering\small
@@ -82,29 +77,29 @@ Source & Auction, single source. \textbf{Number of origins: unknown} \\
 Haul & 593\,mi \\
 Vaccinated pre-arrival / weaned $\geq$\,45\,d & yes / \textbf{unknown} \\
 Order buyer & flagged high risk \\
-Arrival-week weather (NOAA, Lubbock) & 11\,$^\circ$F max day-to-day swing, low 36\,$^\circ$F \\
+Arrival-week weather (NOAA, Lubbock) & 11\,$^\circ$F largest day-to-day swing, low of 36\,$^\circ$F \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The SOP gives this lot \textbf{no metaphylaxis} (it is over 550\,lb).
+At 589\,lb the lot is over Llano's 550\,lb cut-off, so the current procedure gives it \textbf{no metaphylaxis}.
 
 % =============================================================================
-\section{Risk}
+\section{How risky is it?}
 
-Expected 45-day BRD morbidity without metaphylaxis: \textbf{22.2\pct} (80\pct{} interval 8--41\pct). Probability the lot is high-risk ($\geq$\,15\pct): \textbf{69\pct}. Main drivers, as odds multipliers vs the average lot: source and commingling $\times$1.29, arrival season $\times$1.29 and arrival weight $\times$1.25 raise the risk; a mild arrival week ($\times$0.87) lowers it.
+The model expects \textbf{22.2\pct} of the lot to be pulled for BRD within 45 days if nothing is given on arrival, with an 80\pct{} range of 8 to 41\pct. There is a \textbf{69\pct} chance that this becomes a high-risk lot (15\pct{} or more). Three things push the risk up, each by about a quarter in odds: the auction source, the fall arrival date and the lot's weight. A mild arrival week pulls it down a little ($\times$0.87).
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{figures/lot_page.png}
-  \caption{Lot page for LE-251101-01: the recommended option against the SOP, the risk distribution, the drivers of the prediction and the what-if panel used to test the missing weaning record.}
+  \caption{The lot page for LE-251101-01, showing the recommended option against the current procedure, the spread of predicted risk, what drives the prediction, and the what-if panel we used to test the missing weaning record.}
   \label{fig:lot}
 \end{figure}
 
 % =============================================================================
-\section{Alternatives and projected consequences}
+\section{The options and what each would mean}
 
-Per head over the feeding period, relative to the SOP. Value is feeding-period net return minus the \usd{3}/regimen stewardship weight; the dashboard states this basis under every value table.
+Figures are per head over the feeding period, compared with the current procedure. Value is net return minus the \usd{3}-per-regimen stewardship weight, and the dashboard states this under every value table.
 
 \begin{table}[h]
 \centering\small
@@ -119,81 +114,70 @@ Fever screen + enhanced surveillance & +\usd{16.82} & 2.7 & 81 \\
 Premium metaphylaxis & +\usd{15.63} & 2.3 & 184 \\
 Fever screen & +\usd{13.17} & 3.5 & 72 \\
 No metaphylaxis, enhanced surveillance & +\usd{4.03} & 3.8 & 56 \\
-No metaphylaxis, pull-and-treat (\textbf{SOP}) & --- & 4.7 & 43 \\
+No metaphylaxis, pull-and-treat (\textbf{SOP}) & baseline & 4.7 & 43 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Each option is simulated 400 times on the same paired futures; every page (lot list, lot page, demonstration, summary, model comparison) uses the same count, so they rank options identically. The top three options are within \usd{0.24}/head of each other, but they differ greatly in antimicrobial use: 190 regimens vs 81.
+Each option was simulated 400 times on the same set of possible futures, and every page of the dashboard uses that same count, so they all rank the options the same way. The first three options are within 24 cents a head of each other, but they are very different in antibiotic use: 190 regimens for whole-lot treatment against 81 for the fever screen.
 
 % =============================================================================
-\section{Can the data support the decision?}
+\section{Is there enough information to decide?}
 
 \begin{tcolorbox}[colback=warnbg,colframe=warn,boxrule=0.6pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt]
-\textbf{\color{warn}Information insufficient.}
+\textbf{\color{warn}Not yet. The tool marks this lot ``Information insufficient''.}
 \begin{itemize}
-  \item Knowing \textbf{weaning status} would change the recommendation with \textbf{100\pct} probability: either answer moves the decision away from economy metaphylaxis.
-  \item Close call on antimicrobial use: economy metaphylaxis beats premium metaphylaxis with enhanced surveillance in only 60\pct{} of paired simulations, across a wide risk range (8--41\pct).
-  \item The number of origins is also unknown and could change the recommendation (100\pct{} chance, worth $\approx$\,\usd{0.70}/head, below the \usd{1}/head ``need info'' threshold).
+  \item Knowing the weaning status would change the recommendation whichever way the answer goes.
+  \item It is a close call on antibiotic use. Economy metaphylaxis beats premium metaphylaxis with enhanced surveillance in only 60\pct{} of the simulations, and the risk range is wide (8 to 41\pct).
+  \item The number of origins is also unknown and could tip the decision, but finding it out is worth only about 70 cents a head, below the \usd{1} threshold for ``need info''.
 \end{itemize}
 \end{tcolorbox}
 
-\textbf{Weaning status} is the record that matters most. Learning it is worth $\approx$\,\textbf{\usd{208}} for the lot (\usd{1.29}/head):
+Weaning status is the record that matters most. Finding it out is worth about \textbf{\usd{208}} for the lot, or \usd{1.29} a head.
 \begin{itemize}
-  \item if weaned $\rightarrow$ risk 16.5\pct: \textbf{fever screen + enhanced surveillance}, treating only feverish cattle (+\usd{9.15}/hd vs SOP, 63 regimens);
-  \item if not weaned $\rightarrow$ risk 25.3\pct: \textbf{premium metaphylaxis + enhanced surveillance} for the whole lot (+\usd{23.29}/hd, 194 regimens).
+  \item If the calves were weaned, the risk drops to 16.5\pct{} and the best option is a \textbf{fever screen with enhanced surveillance}, treating only the feverish cattle (\usd{9.15} a head better than the SOP, 63 regimens).
+  \item If they were not weaned, the risk rises to 25.3\pct{} and the best option is \textbf{premium metaphylaxis with enhanced surveillance} for the whole lot (\usd{23.29} a head better, 194 regimens).
 \end{itemize}
-So one phone call decides whether 162 head get a whole-lot antibiotic or only the feverish ones do. It is a stewardship decision as much as an economic one.
+In other words, one phone call decides whether all 162 head get an antibiotic or only the sick ones do. That makes it a stewardship decision as much as an economic one.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.72\linewidth]{figures/confidence_panel.png}
-  \caption{Confidence and value-of-information panel for the lot: the reasons behind ``Information insufficient'', the expected value of perfect information, and what each missing record is worth.}
+  \caption{The confidence panel for the lot: why the tool says the information is insufficient, the expected value of perfect information, and what each missing record is worth.}
   \label{fig:conf}
 \end{figure}
 
-\lead{Model robustness} (lot page $\rightarrow$ ``Do the other risk models agree?''):
-\begin{itemize}
-  \item The two logistic models (22.2\pct) and the model average (20.0\pct) recommend economy metaphylaxis.
-  \item The Rojas-predictor logistic, decision tree, random forest and boosted trees predict 17--21\pct{} and recommend the fever screen with enhanced surveillance (4 of 7).
-  \item Every model agrees the SOP's ``pull and treat only'' is the wrong call (each model's own choice is +\usd{12.22} to +\usd{17.06}/hd better). They disagree only on how much antibiotic to use, exactly the question the phone call answers.
-\end{itemize}
+We also ran the lot through all seven risk models (on the lot page, ``Do the other risk models agree?''). The two logistic models (22.2\pct) and the model average (20.0\pct) recommend economy metaphylaxis. The other four, which predict between 17 and 21\pct, prefer the fever screen with enhanced surveillance. Every model agrees that the current ``pull and treat only'' approach is the wrong call, with each model's own choice worth \usd{12.22} to \usd{17.06} a head more. They disagree only about how much antibiotic to use, which is exactly what the phone call would settle.
 
-\textbf{Action:} call the order buyer about weaning before processing.
+\textbf{So the first step is to call the order buyer about weaning before the cattle are processed.}
 
 % =============================================================================
-\section{Yard constraints}
+\section{Does the yard have room?}
 
-The yard planner assigns economy metaphylaxis to this lot, the same as its stand-alone best option. Llano's capacity is not binding in this window: the hospital-pen peak is 82 of 170 places and both shadow prices are \usd{0}, so every lot can receive its own best option. (Capacity does bind at Palo Duro and Arkansas River, where pen-rider time is worth \usd{139} and \usd{1,377} per extra hour$\cdot$day.) Across all 39 Llano lots the plan is \textbf{+\usd{27.0}k} vs the SOP, with \textbf{56 vs 78} expected BRD deaths, at the cost of \textbf{1,888 vs 960} antimicrobial regimens.
+The yard planner gives this lot economy metaphylaxis, the same as its own best option. Capacity is not a problem at Llano in this window. The hospital pens peak at 82 of 170 places and neither constraint has a shadow price, so every lot can have its best option. (At Palo Duro and Arkansas River it is different: there, an extra hour of pen-riding a day is worth \usd{139} and \usd{1,377}.) Across all 39 Llano lots the plan is worth \usd{27.0}k more than the current procedure and is expected to lose 56 cattle to BRD instead of 78, but it uses 1,888 antibiotic regimens instead of 960.
 
-Llano's SOP treats only lots under 550\,lb, so heavier but high-risk, buyer-flagged lots go untreated. Closing that gap is where the yard's gain comes from. Raising the stewardship weight on the planner traces how much of the extra antimicrobial use can be cut, and what each cut costs.
+Most of that gain comes from heavier lots that the buyer has flagged as high risk. Llano's weight-only rule currently leaves them untreated. Raising the stewardship weight in the planner shows how much of the extra antibiotic use could be cut, and what each cut would cost.
 
 % =============================================================================
 \section{Recommendation}
 
 \begin{tcolorbox}[colback=boxbg,colframe=accent,boxrule=0.6pt,arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt]
-\textbf{Treat lot LE-251101-01 on arrival, with the intensity decided by one phone call.}
+\textbf{Treat lot LE-251101-01 on arrival, and let one phone call decide how.}
 \begin{itemize}
-  \item If the buyer confirms the calves were weaned $\geq$\,45 days, use a chute-side fever screen with enhanced surveillance: treat only febrile cattle.
-  \item If they were not weaned, use premium metaphylaxis with enhanced surveillance.
-  \item If the call can't be made before processing, use economy-class metaphylaxis (the best option on current records).
+  \item If the buyer confirms the calves were weaned at least 45 days ago, use a chute-side fever screen with enhanced surveillance and treat only the febrile cattle.
+  \item If they were not weaned, give premium metaphylaxis with enhanced surveillance.
+  \item If nobody can be reached before processing, give economy-class metaphylaxis, which is the best choice on the current records.
 \end{itemize}
 \end{tcolorbox}
 
-Expected consequences of the default (economy metaphylaxis) vs SOP:
-\begin{itemize}
-  \item +\usd{17.06}/head after the stewardship weight (+\usd{2,763} for the lot);
-  \item 3.1 vs 4.7 expected BRD deaths;
-  \item 190 vs 43 antimicrobial regimens;
-  \item peak hospital demand of 4.8 head from this lot.
-\end{itemize}
+Compared with the current procedure, the fallback (economy metaphylaxis) is worth \usd{17.06} a head after the stewardship weight, or \usd{2,763} for the lot. It is expected to lose 3.1 head to BRD instead of 4.7, uses 190 antibiotic regimens instead of 43, and would put at most 4.8 head from this lot in the hospital at once.
 
 % =============================================================================
-\section{Veterinary review and record}
+\section{Vet review and the decision record}
 
-The option adds antimicrobial use beyond the yard's SOP, so it is marked \textbf{needs review} and queued for the veterinarian of record. The vet approves, modifies or declines it on the lot page (product, dose and withdrawal per label). \textbf{Decision Summary $\rightarrow$ Single lot $\rightarrow$ LE-251101-01} produces the signed one-page record (print/PDF, Markdown, JSON).
+Because this adds antibiotics beyond the yard's procedure, the tool marks it \textbf{needs review} and sends it to the veterinarian of record. The vet approves, changes or declines it on the lot page and specifies the product, dose and withdrawal according to the label. The Decision Summary page then produces a one-page signed record for the lot, which can be printed or saved as PDF, Markdown or JSON.
 
 \vfill
-{\footnotesize\color{gray} Records are synthetic, generated by a documented, seeded process calibrated to the supplied literature and driven by real NOAA weather. The case demonstrates the decision logic; it does not establish field performance. Medication-related outputs are decision support and require review by the veterinarian of record.}
+{\footnotesize\color{gray} The records in this case are synthetic. They come from a documented, seeded process calibrated to the supplied literature and driven by real NOAA weather. The case shows how the decision logic works. It does not show field performance. Anything involving medication is decision support only and must be reviewed by the veterinarian of record.}
 
 \end{document}
