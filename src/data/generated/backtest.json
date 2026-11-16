@@ -1,0 +1,940 @@
+{
+ "lots": 666,
+ "head": 96089,
+ "agreement": 0.08258258258258258,
+ "amuPenalty": 3,
+ "policies": [
+  {
+   "policy": "statusQuo",
+   "valuePerHead": -70.38759612586412,
+   "deltaPerHead": 0,
+   "regimensPer100": 64.2220025184985,
+   "bRdMortalityPct": 1.5248502256588514,
+   "incidencePct": 19.222450020293714
+  },
+  {
+   "policy": "blanket",
+   "valuePerHead": -71.63095893437766,
+   "deltaPerHead": -1.243362808513545,
+   "regimensPer100": 110.58016699795681,
+   "bRdMortalityPct": 1.1671436550142722,
+   "incidencePct": 14.727322239451613
+  },
+  {
+   "policy": "none",
+   "valuePerHead": -81.36968248015171,
+   "deltaPerHead": -10.982086354287587,
+   "regimensPer100": 21.076179375370742,
+   "bRdMortalityPct": 2.311055375745402,
+   "incidencePct": 29.14403660495305
+  },
+  {
+   "policy": "buyerFlag",
+   "valuePerHead": -68.64911804318231,
+   "deltaPerHead": 1.7384780826818123,
+   "regimensPer100": 65.80440355642513,
+   "bRdMortalityPct": 1.4375804375804373,
+   "incidencePct": 18.114158054858876
+  },
+  {
+   "policy": "toolEconomic",
+   "valuePerHead": -66.14664320371001,
+   "deltaPerHead": 4.240952922154104,
+   "regimensPer100": 75.43920046345919,
+   "bRdMortalityPct": 1.3100875230255282,
+   "incidencePct": 18.74245404434086
+  },
+  {
+   "policy": "tool",
+   "valuePerHead": -65.84654572495344,
+   "deltaPerHead": 4.541050400910675,
+   "regimensPer100": 60.492879864847495,
+   "bRdMortalityPct": 1.294463119260962,
+   "incidencePct": 19.149444785563407
+  },
+  {
+   "policy": "oracle",
+   "valuePerHead": -61.406543618746674,
+   "deltaPerHead": 8.981052507117445,
+   "regimensPer100": 66.99981614267323,
+   "bRdMortalityPct": 1.1275484186535394,
+   "incidencePct": 16.86613105211489
+  }
+ ],
+ "yards": [
+  {
+   "yard": "palo-duro",
+   "deltaPerHead": 3.5809241112186534,
+   "amuChangePct": -7.441938250207721
+  },
+  {
+   "yard": "llano",
+   "deltaPerHead": 12.472057787435096,
+   "amuChangePct": 93.32390333351309
+  },
+  {
+   "yard": "cimarron",
+   "deltaPerHead": 2.3584538173514855,
+   "amuChangePct": -12.561613000284911
+  },
+  {
+   "yard": "arkansas-river",
+   "deltaPerHead": 2.558449944057742,
+   "amuChangePct": -33.477223536738634
+  }
+ ],
+ "frontier": [
+  {
+   "amuPenalty": 0,
+   "valuePerHead": -66.14664320371001,
+   "regimensPer100": 75.43920046345919,
+   "mortalityPct": 1.3100875230255282
+  },
+  {
+   "amuPenalty": 2,
+   "valuePerHead": -65.99788803286756,
+   "regimensPer100": 65.21672962912854,
+   "mortalityPct": 1.3124464472173358
+  },
+  {
+   "amuPenalty": 3,
+   "valuePerHead": -65.84654572495344,
+   "regimensPer100": 60.492879864847495,
+   "mortalityPct": 1.294463119260962
+  },
+  {
+   "amuPenalty": 5,
+   "valuePerHead": -65.80122873819138,
+   "regimensPer100": 53.60741257237211,
+   "mortalityPct": 1.290883104899276
+  },
+  {
+   "amuPenalty": 10,
+   "valuePerHead": -66.35547064154412,
+   "regimensPer100": 45.72964647358182,
+   "mortalityPct": 1.340583556216978
+  },
+  {
+   "amuPenalty": 20,
+   "valuePerHead": -67.51889176457165,
+   "regimensPer100": 38.42071412960904,
+   "mortalityPct": 1.4410563817571893
+  },
+  {
+   "amuPenalty": 35,
+   "valuePerHead": -68.64736935047328,
+   "regimensPer100": 34.26988521058603,
+   "mortalityPct": 1.5343483645370433
+  },
+  {
+   "amuPenalty": 60,
+   "valuePerHead": -71.51466828249399,
+   "regimensPer100": 29.669320456382447,
+   "mortalityPct": 1.8002685010771264
+  }
+ ],
+ "models": [
+  {
+   "kind": "logit",
+   "value0": 4.240952922154104,
+   "regimens0": 75.43920046345919,
+   "mortality0": 1.3100875230255282,
+   "agreement0": 0.07207207207207207,
+   "valueDef": 4.541050400910675,
+   "regimensDef": 60.492879864847495,
+   "mortalityDef": 1.294463119260962,
+   "agreementDef": 0.08258258258258258
+  },
+  {
+   "kind": "bayes",
+   "value0": 4.243505419678407,
+   "regimens0": 75.45677097968199,
+   "mortality0": 1.3096053311686733,
+   "agreement0": 0.07057057057057058,
+   "valueDef": 4.503338037458983,
+   "regimensDef": 60.26486555866608,
+   "mortalityDef": 1.2967526633294817,
+   "agreementDef": 0.08108108108108109
+  },
+  {
+   "kind": "rojas",
+   "value0": 1.6527976488099947,
+   "regimens0": 70.35641263134525,
+   "mortality0": 1.5044663454366964,
+   "agreement0": 0.03753753753753754,
+   "valueDef": 2.3318255128314935,
+   "regimensDef": 48.56232936825924,
+   "mortalityDef": 1.4406817290914329,
+   "agreementDef": 0.03003003003003003
+  },
+  {
+   "kind": "tree",
+   "value0": 2.9521051979214614,
+   "regimens0": 72.58625163476916,
+   "mortality0": 1.440008741895534,
+   "agreement0": 0.0945945945945946,
+   "valueDef": 3.3985757299593273,
+   "regimensDef": 53.63311790805053,
+   "mortalityDef": 1.3911859491374312,
+   "agreementDef": 0.09309309309309309
+  },
+  {
+   "kind": "forest",
+   "value0": 3.4622208415898394,
+   "regimens0": 73.05614933377737,
+   "mortality0": 1.409384355476001,
+   "agreement0": 0.07507507507507508,
+   "valueDef": 3.54919035445013,
+   "regimensDef": 55.97054466865785,
+   "mortalityDef": 1.3914287795689422,
+   "agreementDef": 0.08858858858858859
+  },
+  {
+   "kind": "gbm",
+   "value0": 3.758685035253672,
+   "regimens0": 72.77751528964468,
+   "mortality0": 1.3427412780512509,
+   "agreement0": 0.08708708708708708,
+   "valueDef": 4.097183395873188,
+   "regimensDef": 58.44115698293596,
+   "mortalityDef": 1.3189577717879593,
+   "agreementDef": 0.0915915915915916
+  },
+  {
+   "kind": "stack",
+   "value0": 3.936456304930095,
+   "regimens0": 73.21306288961273,
+   "mortality0": 1.341065748073835,
+   "agreement0": 0.06606606606606606,
+   "valueDef": 4.212389036137171,
+   "regimensDef": 57.51997280299167,
+   "mortalityDef": 1.3204876035064717,
+   "agreementDef": 0.07357357357357357
+  }
+ ],
+ "stress": [
+  {
+   "id": "base",
+   "label": "As assumed (base case)",
+   "detail": "Default economics; each lot's true risk and true drug response from the generator.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -70.38759612586412,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 1.5248502256588514,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -71.63095893437766,
+     "deltaPerHead": -1.243362808513545,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.1671436550142722,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -81.36968248015171,
+     "deltaPerHead": -10.982086354287587,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -68.64911804318231,
+     "deltaPerHead": 1.7384780826818123,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 1.4375804375804373,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -66.14664320371001,
+     "deltaPerHead": 4.240952922154104,
+     "regimensPer100": 75.43920046345919,
+     "bRdMortalityPct": 1.3100875230255282,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -65.84654572495344,
+     "deltaPerHead": 4.541050400910675,
+     "regimensPer100": 60.492879864847495,
+     "bRdMortalityPct": 1.294463119260962,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -61.406543618746674,
+     "deltaPerHead": 8.981052507117445,
+     "regimensPer100": 66.99981614267323,
+     "bRdMortalityPct": 1.1275484186535394,
+     "incidencePct": 16.86613105211489
+    }
+   ],
+   "captured": 0.5056256376757526,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "rrWeak",
+   "label": "Metaphylaxis 30 % less effective",
+   "detail": "Each lot's risk reduction from either drug class is 30 % smaller than in the truth file.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -77.19797072647005,
+     "deltaPerHead": 0,
+     "regimensPer100": 66.38652707385859,
+     "bRdMortalityPct": 1.7636843620671139,
+     "incidencePct": 22.20245119975579
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -81.6568783810324,
+     "deltaPerHead": -4.4589076545623625,
+     "regimensPer100": 113.71989509725363,
+     "bRdMortalityPct": 1.512406900547063,
+     "incidencePct": 19.057575095310934
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -81.36968248015171,
+     "deltaPerHead": -4.171711753681667,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -76.2248876635939,
+     "deltaPerHead": 0.973083062876138,
+     "regimensPer100": 68.21334387911203,
+     "bRdMortalityPct": 1.701852796192422,
+     "incidencePct": 21.427048534865246
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -72.9846264414145,
+     "deltaPerHead": 4.213344285055529,
+     "regimensPer100": 78.19486448327407,
+     "bRdMortalityPct": 1.5272126188568234,
+     "incidencePct": 21.864889147908016
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -72.34961054214436,
+     "deltaPerHead": 4.848360184325684,
+     "regimensPer100": 63.22090978155662,
+     "bRdMortalityPct": 1.4975144570831886,
+     "incidencePct": 22.149763934130544
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -69.11376793218776,
+     "deltaPerHead": 8.084202794282293,
+     "regimensPer100": 59.80514939275046,
+     "bRdMortalityPct": 1.4310933960529642,
+     "incidencePct": 21.356759531961668
+    }
+   ],
+   "captured": 0.5997326276568395,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "rrStrong",
+   "label": "Metaphylaxis 30 % more effective",
+   "detail": "Each lot's risk reduction is 30 % larger.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -63.58470895629294,
+     "deltaPerHead": 0,
+     "regimensPer100": 62.067048951145985,
+     "bRdMortalityPct": 1.2875667350060884,
+     "incidencePct": 16.239749954035695
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -61.603309334827706,
+     "deltaPerHead": 1.9813996214652374,
+     "regimensPer100": 107.45594188720867,
+     "bRdMortalityPct": 0.8222203720855992,
+     "incidencePct": 10.393617722458696
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -81.36968248015171,
+     "deltaPerHead": -17.784973523858763,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -61.06571276493925,
+     "deltaPerHead": 2.518996191353696,
+     "regimensPer100": 63.408315901577375,
+     "bRdMortalityPct": 1.1729958684136574,
+     "incidencePct": 14.798880898611374
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -59.30423206827213,
+     "deltaPerHead": 4.280476888020817,
+     "regimensPer100": 72.69616015707658,
+     "bRdMortalityPct": 1.0928479499908046,
+     "incidencePct": 15.61606774275239
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -59.32904906633657,
+     "deltaPerHead": 4.2556598899563705,
+     "regimensPer100": 57.7746845806145,
+     "bRdMortalityPct": 1.0899582678558388,
+     "incidencePct": 16.146062504553075
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -53.11311375576105,
+     "deltaPerHead": 10.471595200531892,
+     "regimensPer100": 71.42173054841511,
+     "bRdMortalityPct": 0.8258107934657782,
+     "incidencePct": 12.373872139370803
+    }
+   ],
+   "captured": 0.4064003438311108,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "caseHalf",
+   "label": "BRD case costs half as much",
+   "detail": "Lost value per case $75.59 instead of $151.18.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -55.90169906992298,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 1.5248502256588514,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -60.52365760470756,
+     "deltaPerHead": -4.6219585347845795,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.1671436550142722,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -59.42470911769607,
+     "deltaPerHead": -3.5230100477730906,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -54.99634738473027,
+     "deltaPerHead": 0.9053516851927076,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 1.4375804375804373,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -52.25332106546661,
+     "deltaPerHead": 3.648378004456375,
+     "regimensPer100": 75.43920046345919,
+     "bRdMortalityPct": 1.3100875230255282,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -51.71392880669705,
+     "deltaPerHead": 4.1877702632259295,
+     "regimensPer100": 60.492879864847495,
+     "bRdMortalityPct": 1.294463119260962,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -48.48578005987354,
+     "deltaPerHead": 7.415919010049437,
+     "regimensPer100": 56.38084831076744,
+     "bRdMortalityPct": 1.2405547634658145,
+     "incidencePct": 18.35545518564387
+    }
+   ],
+   "captured": 0.564700107640201,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "caseDouble",
+   "label": "BRD case costs twice as much",
+   "detail": "Lost value per case $302.36.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -99.35939023774645,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 1.5248502256588514,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -93.84556159371762,
+     "deltaPerHead": 5.513828644028844,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.1671436550142722,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -125.25962920506309,
+     "deltaPerHead": -25.90023896731664,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -95.95465936008644,
+     "deltaPerHead": 3.404730877660022,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 1.4375804375804373,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -93.9332874801968,
+     "deltaPerHead": 5.426102757549659,
+     "regimensPer100": 75.43920046345919,
+     "bRdMortalityPct": 1.3100875230255282,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -94.1117795614662,
+     "deltaPerHead": 5.247610676280262,
+     "regimensPer100": 60.492879864847495,
+     "bRdMortalityPct": 1.294463119260962,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -85.36485492302069,
+     "deltaPerHead": 13.99453531472577,
+     "regimensPer100": 79.50724501937437,
+     "bRdMortalityPct": 1.0499675647923612,
+     "incidencePct": 15.82396875119248
+    }
+   ],
+   "captured": 0.3749757000333163,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "drugDear",
+   "label": "Drugs 50 % dearer",
+   "detail": "Metaphylaxis and treatment costs × 1.5.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -75.34043917588373,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 1.5248502256588514,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -82.76893712820488,
+     "deltaPerHead": -7.42849795232115,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.1671436550142722,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -80.07726417524695,
+     "deltaPerHead": -4.736824999363221,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -74.06522581826586,
+     "deltaPerHead": 1.2752133576178728,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 1.4375804375804373,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -70.42739806465494,
+     "deltaPerHead": 4.913041111228783,
+     "regimensPer100": 75.43920046345919,
+     "bRdMortalityPct": 1.3100875230255282,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -69.62874638094247,
+     "deltaPerHead": 5.711692794941255,
+     "regimensPer100": 60.492879864847495,
+     "bRdMortalityPct": 1.294463119260962,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -65.06533969831061,
+     "deltaPerHead": 10.275099477573114,
+     "regimensPer100": 56.189716478126186,
+     "bRdMortalityPct": 1.2580732445961555,
+     "incidencePct": 18.491346564122853
+    }
+   ],
+   "captured": 0.5558771287234588,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "market2025",
+   "label": "October 2025 market prices",
+   "detail": "USDA ERS feeder and fed-cattle prices instead of Weber's simulation prices.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -463.83618139339023,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 1.5248502256588514,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -459.04741503684727,
+     "deltaPerHead": 4.788766356542976,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.1671436550142722,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -486.61381622508435,
+     "deltaPerHead": -22.777634831694126,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -460.70617205316205,
+     "deltaPerHead": 3.1300093402281624,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 1.4375804375804373,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -456.1788682543367,
+     "deltaPerHead": 7.657313139053556,
+     "regimensPer100": 75.43920046345919,
+     "bRdMortalityPct": 1.3100875230255282,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -455.6394555465012,
+     "deltaPerHead": 8.196725846888999,
+     "regimensPer100": 60.492879864847495,
+     "bRdMortalityPct": 1.294463119260962,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -447.6117667274838,
+     "deltaPerHead": 16.224414665906433,
+     "regimensPer100": 74.4627342012786,
+     "bRdMortalityPct": 1.0499883788293485,
+     "incidencePct": 16.003326776911702
+    }
+   ],
+   "captured": 0.5052093413337978,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "survWeak",
+   "label": "Enhanced surveillance barely helps",
+   "detail": "Detection 70 % (not 80 %) and almost no case-fatality benefit (× 0.95).",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -70.38759612586412,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 1.5248502256588514,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -71.63095893437766,
+     "deltaPerHead": -1.243362808513545,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.1671436550142722,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -81.36968248015171,
+     "deltaPerHead": -10.982086354287587,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -68.64911804318231,
+     "deltaPerHead": 1.7384780826818123,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 1.4375804375804373,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -67.28286739263538,
+     "deltaPerHead": 3.104728733228745,
+     "regimensPer100": 74.02899395352229,
+     "bRdMortalityPct": 1.4255742072453648,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -67.30755313227773,
+     "deltaPerHead": 3.0800429935863947,
+     "regimensPer100": 58.68828551308337,
+     "bRdMortalityPct": 1.441576732681851,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -62.625972557763994,
+     "deltaPerHead": 7.761623568100127,
+     "regimensPer100": 67.98702244793884,
+     "bRdMortalityPct": 1.2710091685832903,
+     "incidencePct": 16.84956654767976
+    }
+   ],
+   "captured": 0.39682973112033065,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "missedDeadly",
+   "label": "Missed cases twice as deadly",
+   "detail": "Case fatality of undetected cases 20 % instead of 10 %.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -77.4037214761245,
+     "deltaPerHead": 0,
+     "regimensPer100": 64.2220025184985,
+     "bRdMortalityPct": 2.2505004041392174,
+     "incidencePct": 19.222450020293714
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -76.9149482353824,
+     "deltaPerHead": 0.4887732407420963,
+     "regimensPer100": 110.58016699795681,
+     "bRdMortalityPct": 1.7253518439502256,
+     "incidencePct": 14.727322239451613
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -91.7198540291506,
+     "deltaPerHead": -14.3161325530261,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 3.4064807973163775,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -75.27262109679722,
+     "deltaPerHead": 2.131100379327274,
+     "regimensPer100": 65.80440355642513,
+     "bRdMortalityPct": 2.1222026801541625,
+     "incidencePct": 18.114158054858876
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -70.95048517026922,
+     "deltaPerHead": 6.453236305855283,
+     "regimensPer100": 75.43920046345919,
+     "bRdMortalityPct": 1.8031859352614077,
+     "incidencePct": 18.74245404434086
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -70.20043019393549,
+     "deltaPerHead": 7.203291282189015,
+     "regimensPer100": 60.492879864847495,
+     "bRdMortalityPct": 1.7417879951572686,
+     "incidencePct": 19.149444785563407
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -64.97438781501603,
+     "deltaPerHead": 12.42933366110847,
+     "regimensPer100": 67.41196876506848,
+     "bRdMortalityPct": 1.4485633110970044,
+     "incidencePct": 16.57105044975666
+    }
+   ],
+   "captured": 0.5795396180189608,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  },
+  {
+   "id": "pessimistic",
+   "label": "Pessimistic for metaphylaxis",
+   "detail": "Drugs 30 % less effective, cases half as costly and drugs 50 % dearer, all at once.",
+   "rows": [
+    {
+     "policy": "statusQuo",
+     "valuePerHead": -65.2966413439011,
+     "deltaPerHead": 0,
+     "regimensPer100": 66.38652707385859,
+     "bRdMortalityPct": 1.7636843620671139,
+     "incidencePct": 22.20245119975579
+    },
+    {
+     "policy": "blanket",
+     "valuePerHead": -78.24261547164633,
+     "deltaPerHead": -12.945974127745227,
+     "regimensPer100": 113.71989509725363,
+     "bRdMortalityPct": 1.512406900547063,
+     "incidencePct": 19.057575095310934
+    },
+    {
+     "policy": "none",
+     "valuePerHead": -58.13229081279124,
+     "deltaPerHead": 7.164350531109857,
+     "regimensPer100": 21.076179375370742,
+     "bRdMortalityPct": 2.311055375745402,
+     "incidencePct": 29.14403660495305
+    },
+    {
+     "policy": "buyerFlag",
+     "valuePerHead": -65.35467424547807,
+     "deltaPerHead": -0.058032901576966375,
+     "regimensPer100": 68.21334387911203,
+     "bRdMortalityPct": 1.701852796192422,
+     "incidencePct": 21.427048534865246
+    },
+    {
+     "policy": "toolEconomic",
+     "valuePerHead": -60.995446878110336,
+     "deltaPerHead": 4.30119446579076,
+     "regimensPer100": 78.19486448327407,
+     "bRdMortalityPct": 1.5272126188568234,
+     "incidencePct": 21.864889147908016
+    },
+    {
+     "policy": "tool",
+     "valuePerHead": -59.73299837824767,
+     "deltaPerHead": 5.563642965653424,
+     "regimensPer100": 63.22090978155662,
+     "bRdMortalityPct": 1.4975144570831886,
+     "incidencePct": 22.149763934130544
+    },
+    {
+     "policy": "oracle",
+     "valuePerHead": -53.81550461836368,
+     "deltaPerHead": 11.481136725537418,
+     "regimensPer100": 38.55367419787908,
+     "bRdMortalityPct": 1.6817950025497206,
+     "incidencePct": 24.71665851450217
+    }
+   ],
+   "captured": 0.48458990591743833,
+   "toolBeatsSop": true,
+   "toolUsesLessAmu": true,
+   "toolFewerDeaths": true
+  }
+ ],
+ "stewardship": {
+  "derived": 3,
+  "lots": 1214,
+  "derivation": [
+   {
+    "lambda": 0,
+    "toolRegimens": 136887.23000000007,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 1,
+    "toolRegimens": 127550.9850000001,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 2,
+    "toolRegimens": 119700.04000000008,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 3,
+    "toolRegimens": 111242.30000000003,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 4,
+    "toolRegimens": 102834.73999999998,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 5,
+    "toolRegimens": 98080.62499999999,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 6,
+    "toolRegimens": 94028.775,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 8,
+    "toolRegimens": 88943.35999999999,
+    "sopRegimens": 113780.22500000006
+   },
+   {
+    "lambda": 10,
+    "toolRegimens": 86192.6299999999,
+    "sopRegimens": 113780.22500000006
+   }
+  ]
+ },
+ "strategies": 7,
+ "note": "Scored against the hidden generator truth (each lot's true risk and true drug response); model trained on pre-2025 arrivals only."
+}

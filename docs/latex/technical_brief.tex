@@ -1,0 +1,258 @@
+% Technical brief: BRD Command Center
+% Compile: tectonic technical_brief.tex   (or pdflatex technical_brief.tex)
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[margin=0.75in,headheight=13pt]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,array}
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\captionsetup{font=small,labelfont={bf,color=accent},skip=5pt}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage[hidelinks]{hyperref}
+
+% ---- Team details: fill in before submission ------------------------------
+\newcommand{\teamname}{[Team name]}
+\newcommand{\teammembers}{[Member 1], [Member 2], [Member 3]}
+% ----------------------------------------------------------------------------
+
+\definecolor{accent}{HTML}{1F3A2D}
+\definecolor{rowshade}{HTML}{F3F1EA}
+\hypersetup{colorlinks=true,linkcolor=accent,urlcolor=accent,citecolor=accent}
+
+\titleformat{\section}{\large\bfseries\color{accent}}{\thesection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{8pt}{3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist{nosep,leftmargin=1.2em,topsep=2pt}
+\renewcommand{\arraystretch}{1.12}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{accent}BRD Command Center --- Technical brief}
+\fancyhead[R]{\small\color{accent}\teamname}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\pct}{\,\%}
+\newcommand{\usd}[1]{\$#1}
+\newcommand{\lead}[1]{\textbf{#1}\enspace}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{accent} BRD Command Center}\\[3pt]
+  {\large A post-arrival decision aid for bovine respiratory disease in feedlot production}\\[5pt]
+  {\small Technical brief \textbullet{} AISFS--Merck Animal Health Interdisciplinary Hackathon 2026 \textbullet{} Problem 1: BRD Decision Aid}\\[2pt]
+  {\small \teamname{} \textbullet{} \teammembers}
+\end{center}
+
+% =============================================================================
+\section{Decision problem}
+
+\lead{User.} The yard manager at each of four feedyards (two in the Texas Panhandle, two in western Kansas), working with the veterinarian of record.
+
+\lead{Decision unit.} The \emph{arrival lot}: cattle placed into one pen on one day. This is the unit at which metaphylaxis is decided in practice (Rojas et al.\ 2022; NAHMS 2019). Individual pulls enter as observed cases.
+
+\lead{Decisions supported.}
+\begin{enumerate}
+  \item \emph{Before or at processing:} which of seven options to apply to an inbound lot: no metaphylaxis with standard or enhanced surveillance, chute-side fever screening with treatment of febrile cattle, or economy- or premium-class metaphylaxis (with or without enhanced surveillance).
+  \item \emph{Days 1--45:} whether an on-feed lot running above expectation warrants mass treatment or closer watching.
+  \item \emph{Yard level:} how to allocate options across all lots within hospital-pen, pen-rider, chute and stewardship limits.
+\end{enumerate}
+
+\lead{Information available at decision time.} Arrival weight, head, sex, source type, number of origins, haul and shrink, vaccination and weaning history (often unknown), the order buyer's risk call, pen and bunk space, and arrival-week weather. For on-feed lots: BRD pulls to date.
+
+\lead{Baseline.} Each yard's \emph{current operating procedure} (SOP), e.g.\ ``premium metaphylaxis for every lot under 725\,lb''. Every option and plan is reported as a difference from it.
+
+% =============================================================================
+\section{Data and provenance}
+
+No dataset was provided and real feedyard records are proprietary, so we built a \textbf{documented synthetic operation} and anchored it to evidence at every point we could (Table~\ref{tab:prov}).
+
+\begin{table}[h]
+\centering\small
+\caption{Data components, evidence class and source.}\label{tab:prov}
+\rowcolors{2}{rowshade}{white}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth} >{\raggedright\arraybackslash}p{0.14\linewidth} X@{}}
+\toprule
+\textbf{Component} & \textbf{Status} & \textbf{Source} \\
+\midrule
+Daily weather, 4 stations, 2023--2025 & Observed & NOAA NCEI GHCN-Daily (public domain) \\
+Feeder and fed cattle prices, 2023--2025 & Observed & USDA ERS Livestock \& Meat Domestic Data (public domain) \\
+Feeding-period economics & Observed equations & Weber et al.\ 2024 (ADG, AFC, VCPH, revenue, interest, cull terms) \\
+Cost per BRD case, metaphylaxis cost, treatment-outcome tree & Observed (some secondary) & Rojas et al.\ 2022 (\usd{151.18}/case; \usd{23.60}); NAHMS 2011 via Johnson \& Pendell 2017 (14.9\pct{} / 12.0\pct{} re-treatment; 4.0 / 13.3 / 30.5\pct{} deaths after 1st/2nd/3rd treatment) \\
+Visual-diagnosis sensitivity & Observed (secondary) & 62--67\pct{} (Timsit et al.\ 2016, as cited in Adekunle \& Kaniyamattam 2026) \\
+Risk-factor directions & Observed (direction) & Adekunle et al.\ 2026 scoping review; Adekunle \& Kaniyamattam 2026 \\
+Risk-factor magnitudes, efficacy, onset timing, labour, capacities & Assumed & Team assumptions; editable; sensitivity-tested \\
+2,976 historical + 254 current lots & Synthetic & Seeded generator with a hidden ``true'' process \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\lead{Calibration targets met} (lower-risk yard vs.\ Rojas et al.\ 2022's 1,733 cohorts): 45-day morbidity \textbf{7.2\pct} (published 6.3\pct) and \textbf{16\pct} high-risk cohorts (10.85\pct). Order-buyer call sensitivity / specificity \textbf{80\pct{} / 59\pct} (managers 83.75\pct{} / 59.79\pct). Overall BRD mortality \textbf{1.47\pct} (Johnson \& Pendell baseline 1.12\pct).
+
+\lead{The hidden process is deliberately hard to learn.} Besides additive risk factors it contains:
+\begin{itemize}
+  \item interactions: weather $\times$ light weight, haul $\times$ unweaned, big commingled lots, light bulls;
+  \item thresholds: shrink above 7\pct;
+  \item vaccine protection that fails in commingled calves;
+  \item yard-specific seasonality;
+  \item an \textbf{unrecorded pathogen pressure} that clusters outbreaks in time within a yard;
+  \item \textbf{record errors}: pay weights, false ``vaccinated'' entries, undercounted origins;
+  \item lot-to-lot variation in metaphylaxis response;
+  \item a modest \textbf{2025 strain shift} (weaker vaccine, stronger cold stress).
+\end{itemize}
+
+So no model sees the full truth, and the temporal holdout faces real concept drift. The four yards differ deliberately in cattle risk mix, crew size, hospital space, \textbf{record completeness} (vaccination status unknown on 11--54\pct{} of lots, by yard) and SOP, so the demonstration contains real operating differences, incomplete information and binding constraints. Of the 52 parameters, 18 are observed, 6 estimated and 28 assumed (five of the assumed are confidence-labelling settings that never change a recommendation). The dashboard labels each one.
+
+% =============================================================================
+\section{Methods}
+
+\lead{Risk model.} Lot-level binomial logistic regression (detected 45-day cases $\sim$ Binomial(head,\,$p$)), fit by Newton--Raphson with an L2 penalty on 35 arrival features. Missing records get explicit ``unknown'' indicators, so missingness is modelled rather than imputed silently. Historical metaphylaxis is a covariate, so the model separates \emph{risky lots} from \emph{treated lots} (confounding by indication). Uncertainty has two parts: a 30-member \textbf{bootstrap ensemble} for parameter uncertainty, and a \textbf{beta-binomial} term for lot-to-lot variation the records cannot explain. \textbf{Explanations} are per-lot log-odds contributions grouped by risk factor and shown as odds multipliers. For lots on feed, a \textbf{Bayesian update} combines the arrival prediction with pulls observed so far, given the expected share of cases by that day on feed.
+
+\lead{Consequences.} For each lot and option, 400 \textbf{paired Monte Carlo} draws (the same count on every page, so all views rank options identically) sample the lot's risk, the efficacy of each drug class ($\pm$ uncertainty) and the disease course. Every option is evaluated on the same simulated futures, so the differences between them are precise. Each draw produces true and detected cases, 1st/2nd/3rd treatments, deaths (higher when cases are missed), the hospital-pen census by day, rider and chute hours, and antimicrobial regimens. Net value per head uses Weber's equations for the healthy pen, Rojas's per-case loss, Weber's re-treatment cost increments and a death loss built from the same components, minus drug and incremental labour cost. \textbf{Stewardship (\$/regimen)} and \textbf{welfare (\$/death)} weights make non-market values explicit instead of hidden. Options are ranked on net value minus these weights, and every value table states this basis.
+
+\lead{The stewardship default is derived, not chosen.} Leadership asked for ``more accountable antimicrobial use''. We turn that into a testable commitment: the tool should use no more antimicrobials than the yards' current SOPs. The default weight is the smallest \$/regimen at which the tool's \emph{own expected} antimicrobial use on the 1,214 lots of 2024 is no higher than the SOPs'. That is \textbf{\usd{3}/regimen}, the shadow price of the commitment. It uses only pre-2025 records and the model's own predictions, never the hidden truth. A manager can set it to \usd{0} (pure economics) or raise it to trade profit for fewer antimicrobials along the frontier in the Yard Planner.
+
+\lead{Information sufficiency.} Each lot gets: (i) the \textbf{expected value of perfect information} about its risk; (ii) the \textbf{value of information} for each missing record, computed by re-running the decision under each plausible value (weighted by that yard's records), together with the probability that learning it \emph{changes the recommendation}; (iii) decision robustness, i.e.\ how often the best option beats the best option with a \emph{different antimicrobial plan} on paired draws; and (iv) out-of-range checks against the training data. Confidence is about the decision, not the data. Unknown records, wide risk ranges and ties that differ only in surveillance are reported but do not lower confidence unless they could change the antimicrobial plan. These combine into \emph{Robust / Use with caution / Information insufficient}, always stated with reasons. The thresholds are editable management settings on the Assumptions page:
+\begin{itemize}
+  \item ``Need info'': a missing record flips the decision with probability $\geq$\,30\pct{} and is worth $\geq$\,\usd{1}/head, about the cost of a phone call spread over the lot.
+  \item ``Caution'': $\geq$\,15\pct{} and $\geq$\,\usd{0.25}/head.
+  \item Robust: the plan wins $\geq$\,60\pct{} of paired draws against the best plan with a different antimicrobial plan.
+\end{itemize}
+These settings change labels, never recommendations. On the 82 inbound lots they give 35 Robust, 43 Caution and 4 Need info. Veterinary review is graded the same way: changes to antimicrobial use relative to the vet-approved SOP are queued for review, with escalations first, while recommendations matching the SOP fall under its standing protocol. Example: ``Knowing weaning status would change the recommendation with 100\pct{} probability ($\approx$\,\usd{208} for the lot)''.
+
+\lead{Portfolio planner.} For each yard it chooses one option per lot to maximise expected value subject to the daily hospital-pen census, rider hours and chute hours over a 60-day calendar, plus an optional antimicrobial cap. The method is greedy Lagrangian-style repair followed by improving swaps. \textbf{Shadow prices} come from re-solving at +10\pct{} capacity. The planner also sweeps the stewardship weight to trace a \textbf{value vs.\ antimicrobial-use frontier}. When no plan can meet every constraint (most of the load comes from cattle already on feed), the dashboard says so and quantifies the overflow.
+
+\lead{Interface.} A React 19 + TypeScript single-page app. The engine runs in a Web Worker, so all current lots are re-simulated about 1.5\,s after any change. Managers can enter or upload lots (validated CSV), edit records in what-if mode, change every assumption, lock options, retrain the model, record veterinary sign-off and export a decision summary (print/PDF, Markdown, JSON). It needs no server, account or paid service.
+
+% =============================================================================
+\section{Evidence and evaluation}
+
+\lead{Prediction (temporal holdout: trained before 2025-01-01, tested on 666 lots from 2025).} AUC for identifying high-risk lots is \textbf{0.772} (95\pct{} CI 0.734--0.807), vs \textbf{0.640} for the order buyer's yes/no call. Rojas et al.\ report 0.68--0.79 on real cohorts. Random 5-fold CV gives 0.836. The gap is the price of outbreak clustering and the 2025 shift, which is why we report the temporal holdout. The calibration slope is 0.81, so 2025 predictions are slightly too extreme. The model re-estimates premium metaphylaxis RR $\approx$ 0.41 from records (truth 0.48), which illustrates residual confounding by indication, so the decision engine uses the explicit, editable efficacy assumption instead.
+
+\lead{Model comparison (Model Lab).} Seven model families ran on the same holdout (Table~\ref{tab:models}). Any of them can drive the engine, and the comparison plots can overlay any subset or isolate a single model.
+
+\begin{table}[h]
+\centering\small
+\caption{Risk models on the 2025 holdout. Decision value is per head vs current SOPs at the default \usd{3}/regimen stewardship weight, scored against the hidden truth.}\label{tab:models}
+\rowcolors{2}{rowshade}{white}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Model} & \textbf{Holdout AUC} & \textbf{5-fold CV AUC} & \textbf{Decision value vs SOP} & \textbf{Regimens /100\,hd} \\
+\midrule
+Penalized logistic (default) & 0.772 & 0.836 $\pm$ 0.015 & +\usd{4.54}/hd & 60.5 \\
+Bayesian logistic (Laplace) & 0.772 & 0.836 & +\usd{4.50}/hd & 60.3 \\
+Model average & 0.763 & 0.832 & +\usd{4.21}/hd & 57.5 \\
+Gradient-boosted trees & 0.757 & 0.824 & +\usd{4.10}/hd & 58.4 \\
+Random forest & 0.743 & 0.816 & +\usd{3.55}/hd & 56.0 \\
+Decision tree & 0.705 & 0.764 & +\usd{3.40}/hd & 53.6 \\
+Logistic, Rojas et al.\ predictors only & 0.682 & 0.748 & +\usd{2.33}/hd & 48.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+  \item Richer arrival records add +0.090 AUC and +\usd{2.21}/hd over Rojas's predictor set. That model's 0.682 sits at the low end of the range they published.
+  \item Decision value tracks predictive quality, and every model beats current SOPs.
+  \item Boosted trees come within 0.015 AUC of the GLM despite the hidden interactions. With about 2,300 training lots and engineered features that already encode the main non-linearities, the penalized GLM's lower variance still wins. More records or raw inputs would favour the trees.
+  \item Evaluation also reports PR-AUC, log loss, Brier skill, calibration slope, ECE, decision curves, per-yard AUC and permutation importance.
+  \item A Data Explorer documents the EDA: all integrity checks pass, and covariate drift is small (all $|\mathrm{SMD}| \leq 0.15$; weather PSI up to 0.24). Missing vaccination records are not informative here (11.7\pct{} morbidity with or without), and the concept drift appears only in the CV-vs-holdout gap.
+\end{itemize}
+
+\lead{Decision quality (policy backtest).} On the same 2025 holdout, each policy chose an option for every lot using arrival-day records. Each choice (200 paired draws per lot) was then scored with 300 draws against the hidden truth: each lot's \textbf{true BRD incidence} and its \textbf{true response to each drug class} (lot-to-lot variation, with PI-exposed lots responding poorly). The tool never sees either. Net value in Table~\ref{tab:backtest} is cash: the stewardship weight is not deducted.
+
+\begin{table}[h]
+\centering\small
+\caption{Policy backtest on 666 lots (96,089 head) arriving in 2025.}\label{tab:backtest}
+\rowcolors{2}{rowshade}{white}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Policy} & \textbf{Net value vs SOP} & \textbf{Regimens /100\,hd} & \textbf{BRD mortality} \\
+\midrule
+Current yard SOPs & --- & 64.2 & 1.52\pct \\
+Blanket premium metaphylaxis & $-$\usd{1.24}/hd & 110.6 & 1.17\pct \\
+No metaphylaxis & $-$\usd{10.98}/hd & 21.1 & 2.31\pct \\
+Order buyer's call & +\usd{1.74}/hd & 65.8 & 1.44\pct \\
+This tool, pure economics (\usd{0}/regimen) & +\usd{4.24}/hd & 75.4 & 1.31\pct \\
+\textbf{This tool, default (\usd{3}/regimen, derived)} & \textbf{+\usd{4.54}/hd} & \textbf{60.5 ($-$6\pct)} & \textbf{1.29\pct} \\
+\emph{Perfect information (upper bound)} & \emph{+\usd{8.98}/hd} & \emph{67.0} & \emph{1.13\pct} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{At its default the tool beats current practice on profit, antimicrobial use and mortality at the same time.} That is the ``accountable antimicrobial use without shifting costs or leaving cattle uncared for'' leadership asked for. It captures 51\pct{} of the gain that perfect knowledge of every lot's true risk and drug response would allow. The default even earns slightly more than pure economics: the tool's assumed efficacy is optimistic for some lots, and the weight trims marginal metaphylaxis that would not pay. By yard, antimicrobial use falls at three yards ($-$7\pct, $-$13\pct, $-$33\pct) and rises at Llano (+93\pct). Llano's SOP (economy metaphylaxis only below 550\,lb) leaves heavier but high-risk, buyer-flagged lots untreated, and correcting that is also where the largest gain is (+\usd{12.47}/hd).
+
+\lead{Robustness: what if our assumptions are wrong?} The backtest's base case shares the tool's economics, so a good result there could be circular. We therefore re-scored the \emph{same} choices, still made with default assumptions, in nine worlds where those assumptions are wrong (Table~\ref{tab:stress}).
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Stress test: the tool's default-assumption choices re-scored in worlds where the truth differs. Values per head vs current SOPs.}\label{tab:stress}
+\setlength{\tabcolsep}{4pt}
+\rowcolors{2}{rowshade}{white}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X C{1.15cm}C{1.25cm}C{1.35cm}C{1.35cm}C{1.65cm}C{2.0cm}@{}}
+\toprule
+\textbf{World (truth differs from the tool's assumptions)} & \textbf{Tool vs SOP} & \textbf{Order buyer vs SOP} & \textbf{Blanket premium vs SOP} & \textbf{Perfect-info gain captured} & \textbf{Regimens /100\,hd (tool vs SOP)} & \textbf{BRD mortality (tool vs SOP)} \\
+\midrule
+As assumed (base case) & \textbf{+\usd{4.54}} & +\usd{1.74} & $-$\usd{1.24} & 51\pct & 60 vs 64 & 1.29 vs 1.52\pct \\
+Metaphylaxis 30\pct{} less effective & \textbf{+\usd{4.85}} & +\usd{0.97} & $-$\usd{4.46} & 60\pct & 63 vs 66 & 1.50 vs 1.76\pct \\
+Metaphylaxis 30\pct{} more effective & \textbf{+\usd{4.26}} & +\usd{2.52} & +\usd{1.98} & 41\pct & 58 vs 62 & 1.09 vs 1.29\pct \\
+BRD case costs half as much & \textbf{+\usd{4.19}} & +\usd{0.91} & $-$\usd{4.62} & 56\pct & 60 vs 64 & 1.29 vs 1.52\pct \\
+BRD case costs twice as much & \textbf{+\usd{5.25}} & +\usd{3.40} & +\usd{5.51} & 37\pct & 60 vs 64 & 1.29 vs 1.52\pct \\
+Drugs 50\pct{} dearer & \textbf{+\usd{5.71}} & +\usd{1.28} & $-$\usd{7.43} & 56\pct & 60 vs 64 & 1.29 vs 1.52\pct \\
+October 2025 market prices & \textbf{+\usd{8.20}} & +\usd{3.13} & +\usd{4.79} & 51\pct & 60 vs 64 & 1.29 vs 1.52\pct \\
+Enhanced surveillance barely helps & \textbf{+\usd{3.08}} & +\usd{1.74} & $-$\usd{1.24} & 40\pct & 59 vs 64 & 1.44 vs 1.52\pct \\
+Missed cases twice as deadly & \textbf{+\usd{7.20}} & +\usd{2.13} & +\usd{0.49} & 58\pct & 60 vs 64 & 1.74 vs 2.25\pct \\
+Pessimistic: all three against metaphylaxis & \textbf{+\usd{5.56}} & $-$\usd{0.06} & $-$\usd{12.95} & 48\pct & 63 vs 66 & 1.50 vs 1.76\pct \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+In \textbf{all 10 worlds} the tool earns more than the SOPs (+\usd{3.08} to +\usd{8.20}/hd), uses \textbf{no more antimicrobials}, and has \textbf{fewer BRD deaths}. Blanket metaphylaxis swings from $-$\usd{12.95} to +\usd{5.51} and the order buyer's call from $-$\usd{0.06} to +\usd{3.40}: rules of thumb are brittle when conditions change, while lot-level decisions adapt. Surveillance effectiveness matters most (+\usd{3.08} when enhanced riding barely helps), which identifies the assumption most worth measuring on a real yard.
+
+\lead{Demonstration case} (separate document). Lot LE-251101-01 at Llano Estacado (162 auction steers, 589\,lb, buyer-flagged, weaning status and number of origins unknown). The SOP gives no metaphylaxis. On current records the tool recommends economy-class metaphylaxis (+\usd{17.06}/hd after the stewardship weight, 3.1 vs 4.7 expected deaths). It rates the information \textbf{insufficient}:
+\begin{itemize}
+  \item premium metaphylaxis with enhanced surveillance and a fever screen with enhanced surveillance are within \usd{0.24}/hd, but the fever screen uses less than half the antimicrobials (81 vs 190 regimens);
+  \item a call about weaning ($\approx$\,\usd{208}) changes the answer whichever way it goes: weaned means fever screen + enhanced surveillance, not weaned means premium + enhanced surveillance.
+\end{itemize}
+Four of the seven risk models prefer the fever screen, which confirms that the lot sits on a decision boundary.
+
+% =============================================================================
+\section{Trade-offs, assumptions and limitations}
+
+\begin{itemize}
+  \item \textbf{Synthetic records.} Every model and backtest number reflects the decision logic under a documented, literature-calibrated process, not field performance. The retrain panel and CSV import are the path to validating on a yard's own records.
+  \item \textbf{Effect sizes.} None of the supplied sources report adjusted odds ratios for risk factors. Magnitudes are assumptions with literature-consistent directions. Metaphylaxis efficacy (RR 0.5) mirrors Rojas's 50\pct{} assumption. The tornado analysis on the Assumptions page shows which assumptions can flip a given decision (most often efficacy, drug cost and per-case loss).
+  \item \textbf{Economics.} Weber's coefficients make treated pens convert feed \emph{better} (negative AFC term). Applied per head, this cancels most of the gain penalty, while their large losses come through a mortality equation they do not print. We therefore price disease per case (Rojas) on top of a healthy-pen Weber baseline. Absolute margins are negative and depend heavily on prices: about $-$\usd{70}/hd under the SOPs at Weber's simulation prices for this lighter, higher-risk synthetic population, and about $-$\usd{464}/hd at October 2025 USDA ERS prices, when feeder cattle cost far more than the fed-cattle price could recover. The dashboard offers both presets. Decisions rest on \emph{differences} between options, which stay positive and stable: the tool gains +\usd{4.54}/hd vs the SOPs at Weber prices and +\usd{8.20}/hd at 2025 prices.
+  \item \textbf{Nutrition.} We judged nutrition relevant but could not represent it at the arrival decision honestly: none of the supplied sources quantifies receiving-ration or water effects on BRD risk, and no nutrition record exists for a lot before it is processed. Its proxies enter instead: shrink (transit dehydration and feed deprivation), weaning status (calves not yet on feed) and bunk space per head (access to the receiving ration). The natural extension is an on-feed signal: daily bunk reads or dry-matter intake in the first 7--10 days fall before clinical BRD, and would enter the Bayesian on-feed update alongside sick pulls.
+  \item \textbf{Scope.} Respiratory disease only. Products, doses and withdrawal times are intentionally left to the veterinarian. Weather for scheduled arrivals uses observed data as a stand-in for forecasts. Transmission between pens is not modelled.
+  \item \textbf{With more data:} real lot records with treatment timing would let us estimate effect sizes and efficacy (causal methods such as propensity weighting) instead of assuming them. Chute-side temperatures, remote sensing or accelerometers would sharpen the on-feed update. Lung-lesion data would calibrate detection sensitivity, and closeouts would let us re-estimate the economic equations.
+\end{itemize}
+
+\lead{Veterinary oversight.} Every option that involves antimicrobials is labelled, queued for review, and printed with a signature line for the veterinarian of record.
+
+% =============================================================================
+\section*{References}
+\small
+\begin{enumerate}[label={[\arabic*]},leftmargin=2em,itemsep=1pt]
+  \item Adekunle A, Kaniyamattam K (2026). Bovine respiratory disease: epidemiological drivers, transmission dynamics, and economic implications in beef production systems. MDPI.
+  \item Adekunle A, Gaines A, Estefano N, Lenin D, Hole P, Khandelwal R, Cooke R, Kaniyamattam K (2026). Mapping variability in bovine respiratory disease risk factors in beef production systems: a scoping review. \emph{Animals} 16:1726. doi:10.3390/ani16111726
+  \item Johnson KK, Pendell DL (2017). Market impacts of reducing the prevalence of bovine respiratory disease in United States beef cattle feedlots. \emph{Frontiers in Veterinary Science} 4:189. doi:10.3389/fvets.2017.00189
+  \item Rojas HA, White BJ, Amrine DE, Larson RL (2022). Predicting bovine respiratory disease risk in feedlot cattle in the first 45 days post arrival. \emph{Pathogens} 11:442. doi:10.3390/pathogens11040442
+  \item USDA APHIS (2019). Antimicrobial Use and Stewardship on U.S. Feedlots, 2017. National Animal Health Monitoring System.
+  \item Weber KMD, Schroeder TC, Renter DG, Pendell DL, Tonsor GT (2024). Evaluation of bovine respiratory disease morbidity in the feedlot and its effect on net return distributions. AAEA Annual Meeting poster.
+  \item Menne MJ, et al.\ (2012). Global Historical Climatology Network -- Daily (GHCN-Daily), Version 3. NOAA National Climatic Data Center. doi:10.7289/V5D21VHZ
+  \item USDA Economic Research Service. Livestock and Meat Domestic Data: livestock prices (accessed 2026-11-13).
+\end{enumerate}
+
+\medskip
+\emph{External resources and AI disclosure.} Data: NOAA NCEI GHCN-Daily and USDA ERS (public domain); US Census boundaries via us-atlas (ISC); six USDA photographs (public domain); open-source software under MIT / ISC / Apache-2.0 / OFL licences (full list in \texttt{docs/LICENSES-THIRD-PARTY.md}). The application's code, synthetic-data generator and documentation were developed with assistance from Anthropic's Claude (Claude Code); the team verified parameters and claims against the cited sources and is responsible for all claims and results.
+
+\end{document}

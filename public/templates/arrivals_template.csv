@@ -1,0 +1,7 @@
+lotId,yardId,arrivalDate,head,sex,weightLb,source,nSources,haulMiles,shrinkPct,vaccinated,weaned,buyerHighRisk,tempSwingF,minTempF,precipIn,penAreaM2PerHead,bunkCmPerHead,febrilePct,casesToDate,daysOnFeed,status,processedWith,notes
+PD-251021-01,palo-duro,2025-10-21,50,heifer,381,auction_multi,3,764,5.2,no,unknown,true,14,40,0.59,21.9,26,,,,scheduled,,Order-buyer pre-arrival record; weather from NOAA observations treated as forecast.
+PD-251021-02,palo-duro,2025-10-21,236,steer,447,auction_multi,10,576,4.8,unknown,no,true,14,40,0.59,16.1,29,,,,scheduled,,Order-buyer pre-arrival record; weather from NOAA observations treated as forecast.
+PD-251021-03,palo-duro,2025-10-21,93,steer,519,preconditioned,,740,5.7,yes,yes,true,14,40,0.59,15.8,26,,,,scheduled,,Order-buyer pre-arrival record; weather from NOAA observations treated as forecast.
+PD-251021-04,palo-duro,2025-10-21,144,mixed,505,auction_multi,10,777,6,no,yes,true,14,40,0.59,16.6,28,,,,scheduled,,Order-buyer pre-arrival record; weather from NOAA observations treated as forecast.
+PD-251023-01,palo-duro,2025-10-23,96,bull,340,auction_multi,9,429,4.9,no,unknown,true,16,33,0.61,17.9,30,,,,scheduled,,Order-buyer pre-arrival record; weather from NOAA observations treated as forecast.
+PD-251023-02,palo-duro,2025-10-23,66,steer,379,auction_multi,9,803,4.8,unknown,no,true,16,33,0.61,16.1,28,,,,scheduled,,Order-buyer pre-arrival record; weather from NOAA observations treated as forecast.

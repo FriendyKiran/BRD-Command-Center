@@ -1,0 +1,225 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/700.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens. A warm "Panhandle prairie" palette: paper, ink, wheat, sage, rust.
+ * Light theme is the default; .dark on <html> switches every token.
+ */
+:root {
+  --bg: #f5f2ea;
+  --bg-elev: #fbf9f4;
+  --panel: #ffffff;
+  --panel-2: #f3efe5;
+  --line: #e3ddcf;
+  --line-strong: #cfc6b2;
+  --ink: #1d2420;
+  --ink-2: #4a524c;
+  --ink-3: #7b827b;
+  --brand: #1f3b2d;
+  --brand-2: #2f5a43;
+  --wheat: #d9a441;
+  --wheat-soft: #f3e3bd;
+  --sage: #5c8a6b;
+  --sage-soft: #dcebdf;
+  --rust: #c2552d;
+  --rust-soft: #f6dccf;
+  --sky: #3d6f8f;
+  --sky-soft: #d8e6ef;
+  --plum: #7b4f8a;
+  --danger: #b3261e;
+  --risk-0: #4f8a5f;
+  --risk-1: #9bb24f;
+  --risk-2: #d9a441;
+  --risk-3: #d9772f;
+  --risk-4: #b8361f;
+  --m-logit: #2a78d6;
+  --m-bayes: #6250d6;
+  --m-rojas: #e87ba4;
+  --m-tree: #eda100;
+  --m-forest: #1baf7a;
+  --m-gbm: #eb6834;
+  --m-stack: #008300;
+  --y-palo-duro: #2a78d6;
+  --y-llano: #eb6834;
+  --y-cimarron: #1baf7a;
+  --y-arkansas-river: #eda100;
+  --shadow: 0 1px 2px rgb(29 36 32 / 0.06), 0 4px 16px rgb(29 36 32 / 0.06);
+  --shadow-lg: 0 10px 40px rgb(29 36 32 / 0.14);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #111613;
+  --bg-elev: #161c18;
+  --panel: #1a211d;
+  --panel-2: #212923;
+  --line: #2b352f;
+  --line-strong: #3a463e;
+  --ink: #ecebe4;
+  --ink-2: #bfc3ba;
+  --ink-3: #8a918a;
+  --brand: #9cc9a8;
+  --brand-2: #7fb58f;
+  --wheat: #e6b75a;
+  --wheat-soft: #3a3020;
+  --sage: #7fb58f;
+  --sage-soft: #1f3327;
+  --rust: #e2774d;
+  --rust-soft: #3d2419;
+  --sky: #77a9cb;
+  --sky-soft: #1c2c37;
+  --plum: #b48cc2;
+  --danger: #ef6b5f;
+  --risk-0: #6fae7f;
+  --risk-1: #b2c869;
+  --risk-2: #e6b75a;
+  --risk-3: #ea8b46;
+  --risk-4: #ef5f45;
+  --m-logit: #3987e5;
+  --m-bayes: #9085e9;
+  --m-rojas: #d55181;
+  --m-tree: #c98500;
+  --m-forest: #199e70;
+  --m-gbm: #d95926;
+  --m-stack: #008300;
+  --y-palo-duro: #3987e5;
+  --y-llano: #d95926;
+  --y-cimarron: #199e70;
+  --y-arkansas-river: #c98500;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 16px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 10px 40px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-wheat: var(--wheat);
+  --color-wheat-soft: var(--wheat-soft);
+  --color-sage: var(--sage);
+  --color-sage-soft: var(--sage-soft);
+  --color-rust: var(--rust);
+  --color-rust-soft: var(--rust-soft);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  --color-plum: var(--plum);
+  --color-danger: var(--danger);
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.grain {
+  background-image: radial-gradient(rgb(0 0 0 / 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 8px;
+}
+
+input[type="range"] {
+  accent-color: var(--brand-2);
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: var(--ink-3);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--line);
+}
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+  .card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .print-full {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+}
